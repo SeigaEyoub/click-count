@@ -1,12 +1,10 @@
-# click-count
-xebia exercie
 
-pre-requis: docker et git
+#### pre-requis: 
+   - docker 
+   - git
 
-
-reuperer le projet git 
-git clone https://github.com/SeigaEyoub/click-count.git
-
-
-Pour deployer le projer executer la commande suivante:
-	docker-compose up
+#### pour lancer l'application
+ 
+ git clone https://github.com/SeigaEyoub/click-count.git
+ cd click-count
+ docker-compose up
