@@ -1,0 +1,19 @@
+    version: '3'
+
+    services:
+      redis:
+        image: redis
+        command: redis-server --appendonly yes
+        volumes:
+          - ./data:/data
+        ports:
+          - 6379:6379
+          
+      web:
+        build: .
+        depends_on:
+          - redis
+        links:
+          - redis
+        ports:
+          - 8080:8080
