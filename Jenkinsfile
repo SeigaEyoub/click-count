@@ -8,11 +8,15 @@ node{
          git 'https://github.com/SeigaEyoub/click-count.git'
     
         }
-        
+        stage('MVN package'){
+
+		 def mvnHome = tool name: 'maven3', type: 'maven'
+		 def mvnCMD ="${mvnHome}/bin/mvn"
+		 sh "${mvnCMD} clean package"
+
+        }
         stage('Build docker image'){
         
-         sh 'pwd'
-         sh 'cd /var/lib/jenkins/workspace/clickCount'
          sh '/usr/local/bin/docker-compose up'
     
         }
