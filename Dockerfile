@@ -11,5 +11,5 @@ RUN mvn package
 FROM tomcat:8.5-alpine
 WORKDIR /usr/tomcat/webapps
 COPY --from=base-build /tmp/target/clickCount.war /usr/local/tomcat/webapps/clickCount.war
-EXPOSE 8080
+EXPOSE 8088
 CMD ["catalina.sh", "run"]
