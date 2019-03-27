@@ -1,6 +1,7 @@
 FROM maven:3.5-jdk-8-alpine as base-build 
 
 COPY pom.xml /tmp/
+COPY src /tmp/
 RUN mvn package
 
 RUN ["/usr/local/bin/mvn-entrypoint.sh", "mvn", "clean", "--fail-never"]
