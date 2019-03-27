@@ -1,4 +1,4 @@
-FOM redis
+FROM redis
 -v ./data:/data
 EXPOSE 6379:6379
 CMD["redis-server","--appendonly","yes"] 
