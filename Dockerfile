@@ -1,7 +1,5 @@
 FROM redis
--v ./data:/data
 EXPOSE 6379:6379
-CMD["redis-server","--appendonly","yes"] 
 
 FROM java:8-jre
 ENV CATALINA_HOME /usr/local/tomcat
