@@ -4,7 +4,7 @@ COPY pom.xml /tmp/
 RUN mvn package
 
 RUN ["/usr/local/bin/mvn-entrypoint.sh", "mvn", "clean", "--fail-never"]
-RUN mvn package
+RUN mvn clean package
 
 FROM tomcat:8.5-alpine
 WORKDIR /usr/tomcat/webapps
