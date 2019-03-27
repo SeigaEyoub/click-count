@@ -1,7 +1,12 @@
+FROM maven:3.5-jdk-8-alpine as base-build 
 
-FROM tomcat:8
+COPY pom.xml /tmp/
+RUN mvn package
 
-#copy war to webapps of tomcat
+RUN ["/usr/local/bin/mvn-entrypoint.sh", "mvn", "clean", "--fail-never"]
+RUN mvn package
 
-COPY target/*.war /usr/local/tomcat/webapps/
-expose 8088
+FROM tomcat:8.5-alpine
+WORKDIR /usr/tomcat/webapps
+COPY --from=base-build /tmp/target/clickCount.war /usr/local/tomcat/webapps/clickCount.war
+EXPOSE 8088
