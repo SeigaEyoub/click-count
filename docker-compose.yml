@@ -13,7 +13,7 @@
         image: tomcat:8
         restart: unless-stopped
         volumes:
-           - "./target/clickCount.war /usr/local/tomcat/webapps/clickCount.war"
+           - "/var/lib/jenkins/workspace/clickCount/target/clickCount.war:/usr/local/tomcat/webapps/clickCount.war"
         depends_on:
           - redis
         links:
