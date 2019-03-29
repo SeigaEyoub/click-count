@@ -27,9 +27,9 @@ node{
         
         stage('Deploy dev'){
             sh 'docker ps -f name=redis-session-store -q | xargs --no-run-if-empty docker container stop'
-            sh 'docker ps -f name=optimistic_benz -q | xargs --no-run-if-empty docker container stop'
+            sh 'docker ps -f name=clickcount -q | xargs --no-run-if-empty docker container stop'
             sh 'docker run --rm -d --name redis-session-store redis'
-            sh 'docker run --rm -d --link redis-session-store:redis -p 8088:8080 eseiga/clickcountdemo:1'
+            sh 'docker run --rm -d --name clickcount --link redis-session-store:redis -p 8088:8080 eseiga/clickcountdemo:1'
        
         }
        
